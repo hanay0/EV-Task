@@ -1,9 +1,12 @@
 /* Basic styles for scrolling */
+@import 'fonts.scss';
+
 body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     height: 100%;
+    font-family: 'Raleway';
 }
 
 body {
@@ -29,8 +32,14 @@ body {
 .align-items-end {
     align-items: flex-end;
 }
+.align-items-stretch {
+    align-items: stretch;
+}
 .flex-column {
     flex-direction: column;
+}
+.text-white {
+    color: #FFFFFF;
 }
 
 #machine-animation {
@@ -111,9 +120,6 @@ body {
     }
 }
 
-
-
-
 @keyframes fadeInTopToBottom {
     0% {
       opacity: 0;
@@ -135,23 +141,8 @@ body {
     opacity: 1;
   }
 
-//   media queries
- @media screen and (max-width: 992px) {
-    #machine-animation {
-        display: none;
-    }
-    #mobile-tablet {
-        display: block;
-    }
- }
- @media screen and (min-width: 992px) {
-    #mobile-tablet {
-        display: none;
-    }
- }
 
-
- .info-wrapper {
+  .info-wrapper {
     width: 40%;
     height: 500px;
     padding: 0 20px;
@@ -222,3 +213,93 @@ body {
         }
     }
  }
+//   media queries
+ @media screen and (max-width: 992px) {
+    #machine-animation {
+        display: none;
+    }
+    #mobile-tablet {
+        display: block;
+    }
+ }
+ @media screen and (min-width: 992px) {
+    #mobile-tablet {
+        display: none;
+    }
+ }
+
+
+//  results section
+
+#results {
+    background-image: url(assets/img/statistics-bg.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding: 50px 0;
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .units-wrapper {
+        flex-wrap: wrap;
+        padding: 0 20px;
+
+        .unit {
+            width: 20%;
+    
+            h3  {
+                font-size: 50px;
+                margin-bottom: 15px;
+            }
+    
+            h4 {
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 27px;
+                margin: 0;
+            }
+    
+            svg {
+                margin: 40px 0;
+            }
+    
+            a {
+                text-decoration: none;
+                transition: color 300ms ease-in-out;
+                font-family: 'Rajdhani';
+                font-weight: 700;
+                line-height: 15px;
+                font-size: 20px;
+
+                &:hover {
+                    color: #40aa1d;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #results {
+        .units-wrapper {
+            .unit {
+                width: 45%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    #results {
+        .units-wrapper {
+            justify-content: center;
+            align-items: center;
+
+            .unit {
+                width: 90%;
+            }
+        }
+    }
+}
