@@ -124,23 +124,29 @@ gsap.from('.unit svg', {
 });
 
 // counter : 
-document.querySelectorAll('.counter').forEach(counter => {
-  const targetNumber = parseInt(counter.dataset.target); // Get the target number from data attribute
+document.querySelectorAll('.counter').forEach((counter, index) => {
+  const targetNumber = parseInt(counter.dataset.target);
 
   gsap.fromTo(counter, {
-      innerHTML: 0 // Start the count at 0
+      innerHTML: 0
   }, {
-      innerHTML: targetNumber, // End at the target number
-      duration: 3, // Duration of the count animation
-      ease: 'power1.inOut', // Ease effect
+      innerHTML: targetNumber,
+      duration: 3,
+      ease: 'power1.inOut',
       scrollTrigger: {
-          trigger: counter, // Trigger when the counter is in the viewport
-          start: 'top 80%', // Start when the top of the element reaches 80% of the viewport
-          toggleActions: 'play none none none', // Play once
+          trigger: counter,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
       },
-      snap: { innerHTML: 1 }, // Snap the value to whole numbers
+      snap: { innerHTML: 1 },
       onUpdate: function () {
-          counter.innerHTML = Math.ceil(counter.innerHTML) + '%'; // Update the counter and append a percentage sign
+          if (index < 2) {
+            counter.innerHTML = Math.ceil(counter.innerHTML) + '%';
+          } else if (index === 2) {
+            counter.innerHTML = Math.ceil(counter.innerHTML);
+          } else {
+            counter.innerHTML = `$${Math.ceil(counter.innerHTML)} +`;
+          }
       }
   });
 });
